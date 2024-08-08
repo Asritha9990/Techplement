@@ -1,0 +1,115 @@
+def title():
+  l="--------------------------------------------"
+  t="Contacts Management System "
+  l1="--------------------------------------------"
+  print(l.center(130))
+  print(t.center(130))
+  print(l1.center(130))
+title()
+na=[]
+nu=[]
+
+def view():
+  print("CONTACTS")
+  if(len(na)==0):
+    print("CONTACT BOOK IS EMPTY,PLEASE CREATE CONTACTS")
+    print("Total Contacts:",len(na))
+    B=input("Press Enter to Continue")
+
+  else:
+    print("NAME",end="                       ")
+    print("NUmBER")
+    for i in range(0,len(na)):
+      print(na[i],end="                      ")
+      print(nu[i])
+    print("Total Contacts:",len(na))
+def create():
+  n=input("Enter your name:")
+  na.append(n)
+  num=input("Enter your Number :")
+  if(len(num)==10):
+    nu.append(num)
+    print("Contact is added successfully")
+    h=input("if you want to continue enter y/n:")
+    if(h=="y"):
+      create()
+  else:
+    print("Enter valid number")
+    num=input("Enter your Number :")
+    nu.append(num)
+    print("Contact is added successfully")
+    h=input("if you want to continue enter y/n:")
+    if(h=="y"):
+      create()
+    A=input("Press Enter To Continue")
+def search():
+  s=input("Enter Your Name:")
+  if(s in na):
+      a=na.index(s)
+      print("NAME",end="                       ")
+      print("NUmBER")
+      print(na[a],end="                        ")
+      print(nu[a])
+      h=input("if you want to continue enter y/n:")
+      if(h=="y"):
+          search()
+  else:
+      print(s,"Name Is not in the contact book")
+      h=input("if you want to continue enter y/n:")
+      if(h=="y"):
+          search()
+def delete():
+  p=input("Enter Your Name:")
+  if(len(na)==0):
+    print("There is no contacts")
+  elif(p not in na):
+    print(p ,"is not there in contact book")
+  else:
+    u=na.index(p)
+    del na[u]
+    del nu[u]
+    print("Deleted Sccusfully")
+    h=input("if you want to continue enter y/n:")
+    if(h=="y"):
+      delete()
+
+def update():
+  e=input("Enter  Your  Name:")
+  if(e not in na):
+    print(e,"Not in the contact book")
+  else:
+      q=na.index(e)
+      y=input("Enter Your Number:")
+      nu[q]=y
+      print("updated successfully")
+      h=input("if you want to continue enter y/n:")
+      if(h=="y"):
+          update()
+
+
+while True:
+  print("1. View Contancts".center(128))
+  print("2. Create Contancts".center(129))
+  print("3. Search Contancts".center(129))
+  print("4. delete Contancts".center(129))
+  print("5. Update Contancts".center(129))
+  print("6.Exit".center(115))
+  option=input("                                                           Choose your option:")
+  if(option=="1"):
+    view()
+    
+  elif(option=="2"):
+    create()
+  elif(option=="3"):
+    search()
+  elif(option=="4"):
+    delete()
+  elif(option=="5"):
+    update()
+  elif(option=="6"):
+    print("THANK YOU FOR USING THIS SOFTWARE")
+    break
+  else:
+    print("                                                                 Invalid Choice .Please  Choose valid Option")
+    H=input("Press enter key to continue")
+    
